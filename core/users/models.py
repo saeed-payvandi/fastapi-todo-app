@@ -27,3 +27,6 @@ class UserModel(Base):
     def verify_password(self, plain_password: str) -> bool:
         """Verifies the given password against the stored hash."""
         return pwd_context.verify(plain_password, self.password)
+
+    def set_password(self, plain_password: str) -> None:
+        self.password = self.hash_password(plain_password) 
